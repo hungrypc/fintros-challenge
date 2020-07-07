@@ -9,6 +9,7 @@ export const fetchArticles = async () => {
     .catch(err => {
       console.log(err)
     })
+
   return articleIds
 }
 

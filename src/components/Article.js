@@ -23,7 +23,7 @@ function Article(props) {
     return <div>Loading...</div>
   } else {
     return (
-      <div className="article">
+      <div className="article" ref={props.lastArticleRef}>
         {/* <img src={meta.image} alt="preview" /> */}
         <div className="article__title">{article.title}</div>
         <div className="article__description">{meta.description}</div>

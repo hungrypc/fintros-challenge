@@ -17,18 +17,16 @@ function Article(props) {
       })
     })
   }, [])
-  
 
-  console.log(meta)
-
-  
 
   if (loading) {
     return <div>Loading...</div>
   } else {
     return (
-      <div className="article">   
-        <div></div>
+      <div className="article">
+        {/* <img src={meta.image} alt="preview" /> */}
+        <div className="article__title">{article.title}</div>
+        <div className="article__description">{meta.description}</div>
       </div>
     )
   }

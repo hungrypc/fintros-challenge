@@ -11,5 +11,5 @@ export const getMeta = async (url) => {
     console.log(err);
   });
 
-  return metaData
+  return metaData.data
 }

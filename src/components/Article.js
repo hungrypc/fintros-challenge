@@ -6,20 +6,20 @@ import { getMeta } from '../utility/getMeta'
 function Article(props) {
   const [article, setArticle] = useState({})
   const [loading, setLoading] = useState(true)
+  const [meta, setMeta] = useState({})
 
   useEffect(() => {
     fetchArticleData(props.id).then(res => {
       setArticle(res)
-      setLoading(false)
+      getMeta(res.url).then(res => {
+        setMeta(res)
+        setLoading(false)
+      })
     })
   }, [])
   
 
-  // console.log(article.url)
-  if(article.url) {
-    const meta = getMeta(article.url)
-    console.log(meta)
-  }
+  console.log(meta)
 
   
 
@@ -27,8 +27,7 @@ function Article(props) {
     return <div>Loading...</div>
   } else {
     return (
-      <div className="article">
-        {/* <img src={getMeta(article.url).} */}
+      <div className="article">   
         <div></div>
       </div>
     )

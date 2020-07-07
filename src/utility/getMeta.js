@@ -7,9 +7,6 @@ export const getMeta = async (url) => {
   const metaData = await axios.post(metaServerURL, {
     url
   })
-  .then(res => {
-    console.log(res)
-  })
   .catch(err => {
     console.log(err);
   });

@@ -1,9 +1,10 @@
 import React from 'react'
 
-function Navbar() {
+function Navbar(props) {
   return (
-    <div>
-      
+    <div className="navbar">
+      <div className="navbar__title"></div>
+      <input type="text" onChange={() => props.handleSearch()}></input>
     </div>
   )
 }

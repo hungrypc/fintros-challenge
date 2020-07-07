@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Article from './components/Article';
 import Navbar from './components/Navbar'
 import { fetchArticles } from './api/hackerNewsAPI';
-import useArticleSearch from './utility/useArticleSearch'
 
 import './style/css/App.css';
 

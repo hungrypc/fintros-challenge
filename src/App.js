@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import Article from './components/Article';
-import { fetchArticles } from './api/hackerNewsAPI.js';
-
+import { fetchArticles } from './api/hackerNewsAPI';
+import { getMeta } from './utility/getMeta'
 
 import './style/css/App.css';
 
@@ -18,11 +18,13 @@ function App() {
   }
 
   useEffect(() => {
+    // get top 500 stories ids and set to articles state
     fetchArticles().then(articleIds => {
       setArticles(articleIds)
       setLoading(false)
     })
   }, []);
+
 
   if (loading) {
     return <div>Loading...</div>

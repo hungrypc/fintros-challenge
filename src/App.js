@@ -11,18 +11,6 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1)
 
-  // might be better way to do this
-  const populateAppState = async () => {
-    await fetchArticles()  
-      .then(res => {
-        setArticles(res.data)
-        setLoading(false)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  };
-
   // returns number of articles per page
   const paginate = () => {
     const numOfArticles = page * 30;
@@ -30,7 +18,10 @@ function App() {
   }
 
   useEffect(() => {
-    populateAppState()
+    fetchArticles().then(articleIds => {
+      setArticles(articleIds)
+      setLoading(false)
+    })
   }, []);
 
   if (loading) {

@@ -3,22 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { fetchArticleData } from '../api/hackerNewsAPI';
 
 function Article(props) {
-  const [article, setArticle] = useState(null)
+  const [article, setArticle] = useState({})
   const [loading, setLoading] = useState(true)
 
-  const populateArticleState = async () => {
-    await fetchArticleData(props.id)
-      .then(res => {
-        setArticle(res.data)
-        setLoading(false)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-
   useEffect(() => {
-    populateArticleState()
+    fetchArticleData(props.id).then(res => {
+      setArticle(res)
+      setLoading(false)
+    })
   }, [])
 
   if (loading) {

@@ -4,6 +4,7 @@ const baseURL = 'https://hacker-news.firebaseio.com/v0'
 
 export const fetchArticles = async () => {
   // chose beststories because top and new contain jobs (we want articles)
+  console.log('called')
   const articleIds = await axios.get(`${baseURL}/beststories.json`)
     .then(res => res.data)
     .catch(err => {

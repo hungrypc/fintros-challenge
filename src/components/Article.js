@@ -7,11 +7,17 @@ function Article(props) {
   const [meta, setMeta] = useState({})
 
   useEffect(() => {
+    let mounted  = true
     getMeta(props.article.url).then(res => {
-      setMeta(res)
-      setLoading(false)
+      if (mounted) {
+        setMeta(res)
+        setLoading(false)
+      }
     })
-  }, [props.localQuery])
+    return () => {
+      mounted = false
+    }
+  }, [props.localQuery, props.article.url])
 
 
   if (loading) {

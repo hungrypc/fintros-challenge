@@ -42,18 +42,24 @@ function App() {
   }
 
   useEffect(() => {
+    let mounted = true
     setLoading(true)
     fetchArticles(page, query)
       .then(articles => {
-        if (page < 2) {
-          setArticlesList(articles)
-        } else {
-          setArticlesList(prevArticles => {
-            return [...new Set([...prevArticles, ...articles])]
-          })
+        if (mounted) {
+          if (page < 2) {
+            setArticlesList(articles)
+          } else {
+            setArticlesList(prevArticles => {
+              return [...new Set([...prevArticles, ...articles])]
+            })
+          }
+          setLoading(false)
         }
-        setLoading(false)
       })
+    return () => {
+      mounted = false
+    }
   }, [page, filter, query])
 
 

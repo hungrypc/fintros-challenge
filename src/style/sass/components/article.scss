@@ -52,6 +52,7 @@
     }
 
     &--image {
+      width: min(270px);
       img {
         width: 270px;
         height: 200px;

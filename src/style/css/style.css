@@ -132,15 +132,17 @@
     @media only screen and (max-width: 965px) {
       .article__description {
         flex-direction: column; } }
-    .article__description--image img {
-      width: 270px;
-      height: 200px;
-      object-fit: cover;
-      object-position: top; }
-      @media only screen and (max-width: 965px) {
-        .article__description--image img {
-          width: 100%;
-          height: 280px; } }
+    .article__description--image {
+      width: 270px; }
+      .article__description--image img {
+        width: 270px;
+        height: 200px;
+        object-fit: cover;
+        object-position: top; }
+        @media only screen and (max-width: 965px) {
+          .article__description--image img {
+            width: 100%;
+            height: 280px; } }
     .article__description--content {
       display: flex;
       flex-direction: column;

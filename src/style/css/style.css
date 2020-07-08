@@ -29,9 +29,14 @@
 
 .articles-list {
   display: grid;
-  grid-template-columns: minmax(40px, 1fr) minmax(300px, 870px) minmax(40px, 1fr); }
+  grid-template-columns: minmax(40px, 1fr) minmax(280px, 870px) minmax(40px, 1fr); }
   .articles-list__container {
-    grid-column: 2 / 3; }
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; }
 
 .navbar {
   display: flex;

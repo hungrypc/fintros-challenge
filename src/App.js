@@ -49,18 +49,7 @@ function App() {
   }
 
   const mapArticles = () => {
-    return articlesList.map((article, index) => {
-      if (
-        (filter === 'even' && (index + 1) % 2 === 0) ||
-        (filter === 'odd' && (index + 1) % 2 !== 0) ||
-        filter === 'all'
-      ) {
-        return <Article key={article.id} article={article} index={index + 1} localQuery={localQuery}              
-        />
-      } else {
-        return null
-      }
-    })
+    return
   }
 
   useEffect(() => {
@@ -87,11 +76,11 @@ function App() {
 
   return (
     <div className={`App ${darkMode ? 'dark' : 'light'}`}>
-      <Navbar 
-        handleSearch={handleSearch} 
-        handleLocalSearch={handleLocalSearch} 
-        setFilter={setFilter} 
-        handleDarkModeToggle={handleDarkModeToggle} 
+      <Navbar
+        handleSearch={handleSearch}
+        handleLocalSearch={handleLocalSearch}
+        setFilter={setFilter}
+        handleDarkModeToggle={handleDarkModeToggle}
         darkMode={darkMode}
       />
       <div className="hero">
@@ -101,7 +90,18 @@ function App() {
       <div className="articles-list">
         <div className="articles-list__container">
           {loading ? <div>Loading Articles</div> : null}
-          {mapArticles()}
+          {articlesList.map((article, index) => {
+            if (
+              (filter === 'even' && (index + 1) % 2 === 0) ||
+              (filter === 'odd' && (index + 1) % 2 !== 0) ||
+              filter === 'all'
+            ) {
+              return <Article key={article.id} article={article} index={index + 1} localQuery={localQuery}
+              />
+            } else {
+              return null
+            }
+          })}
           {loading ?
             null
             :

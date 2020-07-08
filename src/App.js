@@ -27,7 +27,7 @@ function App() {
       }
     })
     if (node) observer.current.observe(node)
-  }, [])
+  }, [page])
 
 
   const handleSearch = (value) => {
@@ -36,6 +36,7 @@ function App() {
   }
 
   useEffect(() => {
+    setLoading(true)
     fetchArticles(page, query)
       .then(articles => {
         if (page < 2) {
@@ -55,12 +56,24 @@ function App() {
       <Navbar handleSearch={handleSearch} setFilter={setFilter} />
       <div className="hero"></div>
       <div className="articles-list">
-        {articlesList.map((article, index) => (
-          <Article key={article.id} article={article}
-            lastArticleRef={index === articlesList.length - 1 ? lastArticleRef : null}
-          />
-        ))}
-        <div>{page < 6 ? 'More Articles' : 'All Articles Loaded'}</div>
+        {articlesList.map((article, index) => {
+          if (
+            (filter === 'even' && (index + 1) % 2 === 0) ||
+            (filter === 'odd' && (index + 1) % 2 !== 0) ||
+            filter === 'all'
+          ) {
+            return <Article key={article.id} article={article} index={index + 1}
+              // lastArticleRef={index === articlesList.length - 1 ? lastArticleRef : null}
+            />
+          } else {
+            return null
+          }
+        })}
+        {loading ? 
+          null
+          :
+          <div ref={lastArticleRef}>{page < 6 ? 'More Articles' : 'All Articles Loaded'}</div>
+        }
       </div>
     </div>
   );

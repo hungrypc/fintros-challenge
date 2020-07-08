@@ -22,7 +22,7 @@ function Article(props) {
     return (
       <div className="article" ref={props.lastArticleRef}>
         {/* <img src={meta.image} alt="preview" /> */}
-        <div className="article__title">{props.article.title}</div>
+    <div className="article__title">{props.index}. {props.article.title}</div>
         <div className="article__description">{meta.description ? meta.description : null}</div>
       </div>
     )

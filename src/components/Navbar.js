@@ -44,9 +44,6 @@ function Navbar(props) {
         <div className="navbar__filter--btn" onClick={() => props.setFilter('even')}>Even</div>
         <div className="navbar__filter--btn" onClick={() => props.setFilter('odd')}>Odd</div>
       </div>
-      <div className="navbar__title">
-
-      </div>
       <div className="navbar__search">
         <form onSubmit={handleSubmit}>
           <input type="text" onChange={(e) => setQuery(e.target.value)} placeholder="Search Title" />
@@ -55,7 +52,6 @@ function Navbar(props) {
           <input type="text" onChange={(e) => setLocalQuery(e.target.value)} placeholder="Search Title Locally" />
         </form>
       </div>
-      <div></div>
     </div>
   )
 }

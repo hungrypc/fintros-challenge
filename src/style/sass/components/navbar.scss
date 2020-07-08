@@ -1,6 +1,6 @@
 .navbar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
   height: 80px;
   width: 100%;
   position: fixed;
@@ -9,6 +9,14 @@
   box-shadow: 0 2px 6px -6px rgba(34, 2, 0, 0);
   border-bottom: 1px solid transparent;
   transition: all .5s ease;
+
+  @media only screen and (max-width: 850px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+    height: 80px;
+  }
 
 
   &__filter {
@@ -38,9 +46,12 @@
       border-radius: 4px;
       color: #a7a7a7;
       cursor: pointer;
-      margin-right: 10px;
       transition: all .2s ease;
       font-weight: 600;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
 
       &:hover {
         border: 1px solid #99c8ef;
@@ -62,8 +73,11 @@
         padding: 7px 18px;
         background-color: #fff;
         border: 1px solid #e1e1e1;
-        margin-left: 10px;
         transition: border .1s ease;
+        
+        &:last-child {
+          margin-right: 10px;
+        }
 
         &:focus {
           border: 1.5px solid #99c8ef;

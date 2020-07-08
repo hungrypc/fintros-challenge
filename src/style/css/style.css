@@ -95,6 +95,7 @@
 
 .article {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -104,7 +105,8 @@
     border-bottom: 1px solid #e1e1e1; }
   .article__title {
     display: flex;
-    position: relative; }
+    position: relative;
+    width: 100%; }
     .article__title--index {
       width: 40px;
       position: absolute;

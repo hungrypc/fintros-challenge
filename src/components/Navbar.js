@@ -3,10 +3,16 @@ import React, { useState } from 'react'
 function Navbar(props) {
 
   const [query, setQuery] = useState('')
+  const [localQuery, setLocalQuery] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
     props.handleSearch(query)
+  }
+
+  const handleLocalSubmit = e => {
+    e.preventDefault()
+    props.handleLocalSearch(localQuery)
   }
 
   return (
@@ -19,7 +25,9 @@ function Navbar(props) {
       <div className="navbar__title"></div>
       <form onSubmit={handleSubmit}>
         <input type="text" onChange={(e) => setQuery(e.target.value)} placeholder="Search Title"/>
-        {/* <button type="submit" onClick={() => props.handleSearch(query)}>Search Title</button> */}
+      </form>
+      <form onSubmit={handleLocalSubmit}>
+        <input type="text" onChange={(e) => setLocalQuery(e.target.value)} placeholder="Search Title Locally"/>
       </form>
     </div>
   )

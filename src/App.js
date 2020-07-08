@@ -12,6 +12,7 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [query, setQuery] = useState('')
+  const [localQuery, setLocalQuery] = useState('')
   const [filter, setFilter] = useState('all')
 
   // infinite scrolling
@@ -30,9 +31,14 @@ function App() {
   }, [page])
 
 
-  const handleSearch = (value) => {
+  const handleSearch = value => {
     setQuery(value)
     setPage(1)
+  }
+
+  const handleLocalSearch = value => {
+    console.log('hit')
+    setLocalQuery(value)
   }
 
   useEffect(() => {
@@ -53,7 +59,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar handleSearch={handleSearch} setFilter={setFilter} />
+      <Navbar handleSearch={handleSearch} handleLocalSearch={handleLocalSearch} setFilter={setFilter} />
       <div className="hero"></div>
       <div className="articles-list">
         {articlesList.map((article, index) => {
@@ -62,7 +68,7 @@ function App() {
             (filter === 'odd' && (index + 1) % 2 !== 0) ||
             filter === 'all'
           ) {
-            return <Article key={article.id} article={article} index={index + 1}
+            return <Article key={article.id} article={article} index={index + 1} localQuery={localQuery}
               // lastArticleRef={index === articlesList.length - 1 ? lastArticleRef : null}
             />
           } else {

@@ -52,7 +52,7 @@ function App() {
       .then(articles => {
         if (mounted) {
           if (page < 2) {
-            setArticlesList(articles)
+            setArticlesList([...new Set([...articles])])
           } else {
             setArticlesList(prevArticles => {
               return [...new Set([...prevArticles, ...articles])]

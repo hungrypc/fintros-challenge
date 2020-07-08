@@ -6,24 +6,30 @@ function Article(props) {
   const [loading, setLoading] = useState(true)
   const [meta, setMeta] = useState({})
 
+  const checkLocalQuery = () => {
+    return props.article.title.toLowerCase().includes(props.localQuery)
+  }
+
   useEffect(() => {
     let mounted  = true
-    getMeta(props.article.url).then(res => {
-      if (mounted) {
-        setMeta(res)
-        setLoading(false)
-      }
-    })
+    if (checkLocalQuery()) {
+      getMeta(props.article.url).then(res => {
+        if (mounted) {
+          setMeta(res)
+          setLoading(false)
+        }
+      })
+    }
     return () => {
       mounted = false
     }
   }, [props.localQuery, props.article.url])
 
 
-  if (loading) {
+  if (loading && checkLocalQuery()) {
     return <div className="article-loading">Loading...</div>
   } else {
-    if (props.article.title.toLowerCase().includes(props.localQuery)) {
+    if (checkLocalQuery()) {
       return (
         <div className="article" ref={props.lastArticleRef}>          
           <div className="article__title"> 

@@ -42,8 +42,10 @@
   }
 
   &__description {
+    width: 100%;
     margin-top: 15px;
     display: flex;
+    flex-grow: 1;
 
     @media only screen and (max-width: 965px) {
       flex-direction: column;

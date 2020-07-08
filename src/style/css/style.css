@@ -124,8 +124,10 @@
       font-weight: 500;
       font-size: calc(2.25rem + (12 * (100vw - 1440px)) / 1119); }
   .article__description {
+    width: 100%;
     margin-top: 15px;
-    display: flex; }
+    display: flex;
+    flex-grow: 1; }
     @media only screen and (max-width: 965px) {
       .article__description {
         flex-direction: column; } }

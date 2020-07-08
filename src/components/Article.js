@@ -21,7 +21,7 @@ function Article(props) {
 
 
   if (loading) {
-    return <div className="article">Loading...</div>
+    return <div className="article-loading">Loading...</div>
   } else {
     if (props.article.title.toLowerCase().includes(props.localQuery)) {
       return (

@@ -32,12 +32,12 @@ function App() {
 
 
   const handleSearch = value => {
+    setFilter('all')
     setQuery(value)
     setPage(1)
   }
 
   const handleLocalSearch = value => {
-    console.log('hit')
     setLocalQuery(value)
   }
 
@@ -88,8 +88,7 @@ function App() {
               (filter === 'odd' && (index + 1) % 2 !== 0) ||
               filter === 'all'
             ) {
-              return <Article key={article.id} article={article} index={index + 1} localQuery={localQuery}
-              // lastArticleRef={index === articlesList.length - 1 ? lastArticleRef : null}
+              return <Article key={article.id} article={article} index={index + 1} localQuery={localQuery}              
               />
             } else {
               return null

@@ -58,9 +58,7 @@ function App() {
     fetchArticles(page, query)
       .then(articles => {
         if (mounted) {
-          if (page < 2) {
-            setArticlesList([...new Set([...articles])])
-          } else if (page > 2 && page < 6) {
+          if (page > 2 && page < 6) {
             setArticlesList(prevArticles => {
               return [...new Set([...prevArticles, ...articles])]
             })

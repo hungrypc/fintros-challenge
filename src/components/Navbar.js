@@ -18,17 +18,19 @@ function Navbar(props) {
   return (
     <div className="navbar">
       <div className="navbar__filter">
-        <button onClick={() => props.setFilter('all')}>All</button>
-        <button onClick={() => props.setFilter('even')}>Even</button>
-        <button onClick={() => props.setFilter('odd')}>Odd</button>
+        <div className="navbar__filter--btn" onClick={() => props.setFilter('all')}>All</div>
+        <div className="navbar__filter--btn" onClick={() => props.setFilter('even')}>Even</div>
+        <div className="navbar__filter--btn" onClick={() => props.setFilter('odd')}>Odd</div>
       </div>
       <div className="navbar__title"></div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" onChange={(e) => setQuery(e.target.value)} placeholder="Search Title"/>
-      </form>
-      <form onSubmit={handleLocalSubmit}>
-        <input type="text" onChange={(e) => setLocalQuery(e.target.value)} placeholder="Search Title Locally"/>
-      </form>
+      <div className="navbar__search">
+        <form onSubmit={handleSubmit}>
+          <input type="text" onChange={(e) => setQuery(e.target.value)} placeholder="Search Title" />
+        </form>
+        <form onSubmit={handleLocalSubmit}>
+          <input type="text" onChange={(e) => setLocalQuery(e.target.value)} placeholder="Search Title Locally" />
+        </form>
+      </div>
     </div>
   )
 }

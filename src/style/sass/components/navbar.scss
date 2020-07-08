@@ -1,7 +1,59 @@
 .navbar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   height: 80px;
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: azure;
+  background-color: #fff;
+  z-index: 99;
+
+
+  &__filter {
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+
+    &--btn {
+      font-size: .8rem;
+      font-weight: 500;
+      border: 1px solid #e1e1e1;
+      padding: 7px 18px;
+      border-radius: 5px;
+      color: #a7a7a7;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: all .2s ease;
+      font-weight: 600;
+
+      &:hover {
+        border: 1px solid #99c8ef;
+        background-color: #99c8ef;
+        color: #fff;
+      }
+    }
+  }
+
+  &__search {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 0 50px;
+    form {
+      input {
+        font-size: .8rem;
+        border-radius: 5px;
+        padding: 7px 18px;
+        background-color: #fff;
+        border: 1px solid #e1e1e1;
+        margin-left: 10px;
+
+        &:focus {
+          border: 1.5px solid #99c8ef;
+          // outline-offset: 0;
+          outline: none !important;
+        }
+      }
+    }
+  }
 }

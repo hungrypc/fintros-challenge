@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap");
 .light {
   background-color: #fff;
   color: #010101; }
@@ -23,8 +23,9 @@
     letter-spacing: 3px;
     line-height: 5rem; }
   .hero__subheader {
-    margin-top: 20px;
-    font-family: 'Montserrat', sans-serif;
+    margin-top: 30px;
+    font-size: 2.1rem;
+    font-family: 'Inconsolata', monospace;
     white-space: pre; }
 
 .articles-list {

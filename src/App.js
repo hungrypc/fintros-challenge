@@ -4,7 +4,6 @@ import Navbar from './components/Navbar'
 import Article from './components/Article';
 import { fetchArticles } from './api/hackerNewsAPI';
 
-import './style/css/App.css';
 import './style/css/style.css'
 
 function App() {
@@ -14,6 +13,7 @@ function App() {
   const [query, setQuery] = useState('')
   const [localQuery, setLocalQuery] = useState('')
   const [filter, setFilter] = useState('all')
+  const [darkMode, setDarkMode] = useState(false)
 
   // infinite scrolling
   const observer = useRef()
@@ -41,6 +41,10 @@ function App() {
     setLocalQuery(value)
   }
 
+  const handleDarkModeToggle = () => {
+    setDarkMode(!darkMode)
+  }
+
   useEffect(() => {
     let mounted = true
     setLoading(true)
@@ -64,28 +68,35 @@ function App() {
 
 
   return (
-    <div className="App">
-      <Navbar handleSearch={handleSearch} handleLocalSearch={handleLocalSearch} setFilter={setFilter} />
+    <div className={`App ${darkMode ? 'dark' : 'light'}`}>
+      <Navbar 
+        handleSearch={handleSearch} 
+        handleLocalSearch={handleLocalSearch} 
+        setFilter={setFilter} 
+        handleDarkModeToggle={handleDarkModeToggle} 
+      />
       <div className="hero"></div>
       <div className="articles-list">
-        {articlesList.map((article, index) => {
-          if (
-            (filter === 'even' && (index + 1) % 2 === 0) ||
-            (filter === 'odd' && (index + 1) % 2 !== 0) ||
-            filter === 'all'
-          ) {
-            return <Article key={article.id} article={article} index={index + 1} localQuery={localQuery}
+        <div className="articles-list__container">
+          {articlesList.map((article, index) => {
+            if (
+              (filter === 'even' && (index + 1) % 2 === 0) ||
+              (filter === 'odd' && (index + 1) % 2 !== 0) ||
+              filter === 'all'
+            ) {
+              return <Article key={article.id} article={article} index={index + 1} localQuery={localQuery}
               // lastArticleRef={index === articlesList.length - 1 ? lastArticleRef : null}
-            />
-          } else {
-            return null
+              />
+            } else {
+              return null
+            }
+          })}
+          {loading ?
+            null
+            :
+            <div ref={lastArticleRef}>{page < 6 ? 'More Articles' : 'All Articles Loaded'}</div>
           }
-        })}
-        {loading ? 
-          null
-          :
-          <div ref={lastArticleRef}>{page < 6 ? 'More Articles' : 'All Articles Loaded'}</div>
-        }
+        </div>
       </div>
     </div>
   );

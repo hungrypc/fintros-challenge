@@ -1,5 +1,14 @@
 .hero {
-  height: 400px;
+  height: 480px;
   width: 100%;
-  margin-top: 80px;
+  padding-top: 80px;
+}
+
+.articles-list {
+  display: grid;
+  grid-template-columns: minmax(40px, 1fr) minmax(300px, 900px) minmax(40px, 1fr);
+
+  &__container {
+    grid-column: 2 / 3;
+  }
 }

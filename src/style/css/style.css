@@ -1,7 +1,17 @@
+.light {
+  background-color: #fff;
+  color: #010101; }
+
 .hero {
-  height: 400px;
+  height: 480px;
   width: 100%;
-  margin-top: 80px; }
+  padding-top: 80px; }
+
+.articles-list {
+  display: grid;
+  grid-template-columns: minmax(40px, 1fr) minmax(300px, 900px) minmax(40px, 1fr); }
+  .articles-list__container {
+    grid-column: 2 / 3; }
 
 .navbar {
   height: 80px;
@@ -12,4 +22,54 @@
 
 .article {
   width: 100%;
-  height: 100px; }
+  padding: 60px 0; }
+  .article:not(:last-child) {
+    border-bottom: 1px solid #e1e1e1; }
+  .article__title {
+    display: flex; }
+    .article__title--index {
+      width: 40px;
+      margin-left: -40px;
+      font-size: 1rem;
+      line-height: calc(3.4rem + (12 * (100vw - 1440px)) / 1119); }
+    .article__title--header {
+      font-weight: 500;
+      font-size: calc(2.25rem + (12 * (100vw - 1440px)) / 1119); }
+  .article__description {
+    margin-top: 15px;
+    display: flex; }
+    .article__description--image {
+      width: 300;
+      height: 300; }
+      .article__description--image img {
+        width: 270px;
+        height: 200px;
+        object-fit: cover;
+        object-position: top; }
+    .article__description--content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 200px;
+      overflow: hidden;
+      font-size: calc(1.1rem + (2 * (100vw - 1440px)) / 1119);
+      margin-left: 30px;
+      font-weight: 200; }
+      .article__description--content-link a {
+        text-decoration: none;
+        color: #1b5dea;
+        width: min-content; }
+        .article__description--content-link a:after {
+          width: 57px;
+          display: block;
+          content: '';
+          border-bottom: solid 1px #1b5dea;
+          transform: scaleX(0);
+          transition: transform 250ms ease-in-out; }
+        .article__description--content-link a:hover:after {
+          transform: scaleX(1); }
+
+.no-image {
+  width: 270px;
+  height: 200px;
+  background-color: #eee; }

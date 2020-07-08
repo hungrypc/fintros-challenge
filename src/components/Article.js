@@ -25,10 +25,28 @@ function Article(props) {
   } else {
     if (props.article.title.toLowerCase().includes(props.localQuery)) {
       return (
-        <div className="article" ref={props.lastArticleRef}>
-          {/* <img src={meta.image} alt="preview" /> */}
-          <div className="article__title">{props.index}. {props.article.title}</div>
-          <div className="article__description">{meta.description ? meta.description : null}</div>
+        <div className="article" ref={props.lastArticleRef}>          
+          <div className="article__title"> 
+            <div className="article__title--index">
+              {props.index}.
+            </div>
+            <div className="article__title--header">
+              {props.article.title}
+            </div>
+          </div>
+          <div className="article__description">
+            <div className="article__description--image">
+              {meta.image ? <img src={meta.image} alt="preview" /> : <div className="no-image"></div> }
+            </div>
+            <div className="article__description--content">
+              <div>
+                {meta.description ? meta.description : null}
+              </div>
+              <div className="article__description--content-link">
+                <a href={props.article.url}>More... </a>
+              </div>
+            </div>
+          </div>
         </div>
       )
     } else {

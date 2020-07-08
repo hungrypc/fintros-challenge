@@ -29,7 +29,8 @@
 
 .articles-list {
   display: grid;
-  grid-template-columns: minmax(40px, 1fr) minmax(280px, 870px) minmax(40px, 1fr); }
+  grid-template-columns: minmax(40px, 1fr) minmax(280px, 870px) minmax(40px, 1fr);
+  width: 100%; }
   .articles-list__container {
     grid-column: 2 / 3;
     display: flex;

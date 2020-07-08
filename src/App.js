@@ -36,6 +36,7 @@ function App() {
     setQuery(value)
     setLocalQuery('')
     setPage(1)
+    setLoading(true)
   }
 
   const handleLocalSearch = value => {
@@ -83,6 +84,7 @@ function App() {
       </div>
       <div className="articles-list">
         <div className="articles-list__container">
+          {loading ? <div>Loading Articles</div> : null}
           {articlesList.map((article, index) => {
             if (
               (filter === 'even' && (index + 1) % 2 === 0) ||

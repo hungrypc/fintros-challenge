@@ -75,7 +75,10 @@ function App() {
         setFilter={setFilter} 
         handleDarkModeToggle={handleDarkModeToggle} 
       />
-      <div className="hero"></div>
+      <div className="hero">
+        <div className="hero__header">Hacker News</div>
+        <div className="hero__subheader">{"{  Best Stories  }"}</div>
+      </div>
       <div className="articles-list">
         <div className="articles-list__container">
           {articlesList.map((article, index) => {

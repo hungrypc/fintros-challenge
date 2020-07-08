@@ -1,12 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 .hero {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-self: center;
+  justify-content: center;
   height: 480px;
   width: 100%;
   padding-top: 80px;
+
+  &__header {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: calc(7rem + (12 * (100vw - 1440px)) / 1119);
+    font-weight: 600;
+    letter-spacing: 3px;
+    line-height: 5rem;
+  }
+
+  &__subheader {
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    white-space: pre;
+  }
 }
 
 .articles-list {
   display: grid;
-  grid-template-columns: minmax(40px, 1fr) minmax(300px, 900px) minmax(40px, 1fr);
+  grid-template-columns: minmax(40px, 1fr) minmax(300px, 870px) minmax(40px, 1fr);
 
   &__container {
     grid-column: 2 / 3;

@@ -28,7 +28,9 @@ function Article(props) {
         <div className="article" ref={props.lastArticleRef}>          
           <div className="article__title"> 
             <div className="article__title--index">
-              {props.index}.
+              <div>
+                {props.index}.
+              </div>
             </div>
             <div className="article__title--header">
               {props.article.title}

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 import Navbar from './components/Navbar'
 import Article from './components/Article';
-// import ArticlesList from './components/ArticlesList'
 import { fetchArticles } from './api/hackerNewsAPI';
 
 import './style/css/App.css';
@@ -21,7 +20,10 @@ function App() {
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
-        setPage(prevPage => prevPage = prevPage + 1)
+        // should make this dynamic
+        if (page < 6) {
+          setPage(prevPage => prevPage = prevPage + 1)
+        }
       }
     })
     if (node) observer.current.observe(node)
@@ -40,7 +42,7 @@ function App() {
           setArticlesList(articles)
         } else {
           setArticlesList(prevArticles => {
-            return [...prevArticles, ...articles]
+            return [...new Set([...prevArticles, ...articles])]
           })
         }
         setLoading(false)
@@ -58,6 +60,7 @@ function App() {
             lastArticleRef={index === articlesList.length - 1 ? lastArticleRef : null}
           />
         ))}
+        <div>{page < 6 ? 'More Articles' : 'All Articles Loaded'}</div>
       </div>
     </div>
   );

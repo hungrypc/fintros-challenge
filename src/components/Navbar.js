@@ -13,7 +13,7 @@ function Navbar(props) {
       </div>
       <div className="navbar__title"></div>
       <input type="text" onChange={(e) => setQuery(e.target.value)}></input>
-      <button onClick={() => props.handleSearch(query)}>Search</button>
+      <button onClick={() => props.handleSearch(query)}>Search Title</button>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Button = styled.button`
   font-size: .8rem;
@@ -11,6 +11,13 @@ const Button = styled.button`
   cursor: pointer;
   transition: all .2s ease;
   font-weight: 600;
+  outline: none;
+
+  ${props => props.filter && css `
+    border: 1px solid #99c8ef;
+    background-color: #99c8ef;
+    color: #fff;
+  `}
 `
 
 const Input = styled.input`
@@ -61,9 +68,27 @@ function Navbar(props) {
         >
           {props.darkMode ? <i className="fas fa-moon"></i> : <i className="far fa-moon"></i>}
         </div>
-        <Button className="navbar__filter--btn" onClick={() => props.setFilter('all')}>All</Button>
-        <Button className="navbar__filter--btn" onClick={() => props.setFilter('even')}>Even</Button>
-        <Button className="navbar__filter--btn" onClick={() => props.setFilter('odd')}>Odd</Button>
+        <Button 
+          className={"navbar__filter--btn"} 
+          filter={props.filter === 'all'}
+          onClick={() => props.handleFilter('all')}
+        >
+          All
+        </Button>
+        <Button 
+          className="navbar__filter--btn" 
+          filter={props.filter === 'even'}
+          onClick={() => props.handleFilter('even')}
+        >
+          Even
+        </Button>
+        <Button 
+          className="navbar__filter--btn" 
+          filter={props.filter === 'odd'}
+          onClick={() => props.handleFilter('odd')}
+        >
+          Odd
+        </Button>
       </div>
       <div className="navbar__search">
         <form onSubmit={handleSubmit}>

@@ -48,8 +48,8 @@ function App() {
     setDarkMode(!darkMode)
   }
 
-  const mapArticles = () => {
-    return
+  const handleFilter = value => {
+    setFilter(value)
   }
 
   useEffect(() => {
@@ -81,7 +81,9 @@ function App() {
       <Navbar
         handleSearch={handleSearch}
         handleLocalSearch={handleLocalSearch}
-        setFilter={setFilter}
+        // setFilter={setFilter}
+        handleFilter={handleFilter}
+        filter={filter}
         handleDarkModeToggle={handleDarkModeToggle}
         darkMode={darkMode}
       />

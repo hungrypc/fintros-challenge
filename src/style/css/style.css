@@ -40,7 +40,10 @@
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 99; }
+  z-index: 99;
+  box-shadow: 0 2px 6px -6px rgba(34, 2, 0, 0);
+  border-bottom: 1px solid transparent;
+  transition: all .5s ease; }
   .navbar__filter {
     display: flex;
     align-items: center;
@@ -86,6 +89,10 @@
         border: 1.5px solid #99c8ef;
         outline-offset: 0;
         outline: none !important; }
+
+.scroll-border {
+  border-bottom: 1px solid #e1e1e1;
+  box-shadow: 0 2px 6px -6px #220200; }
 
 .article {
   width: 100%;

@@ -34,6 +34,7 @@ function App() {
   const handleSearch = value => {
     setFilter('all')
     setQuery(value)
+    setLocalQuery('')
     setPage(1)
   }
 

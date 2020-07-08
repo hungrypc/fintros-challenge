@@ -32,6 +32,7 @@ function App() {
 
 
   const handleSearch = value => {
+    setArticlesList([])
     setFilter('all')
     setQuery(value)
     setLocalQuery('')
@@ -45,6 +46,21 @@ function App() {
 
   const handleDarkModeToggle = () => {
     setDarkMode(!darkMode)
+  }
+
+  const mapArticles = () => {
+    return articlesList.map((article, index) => {
+      if (
+        (filter === 'even' && (index + 1) % 2 === 0) ||
+        (filter === 'odd' && (index + 1) % 2 !== 0) ||
+        filter === 'all'
+      ) {
+        return <Article key={article.id} article={article} index={index + 1} localQuery={localQuery}              
+        />
+      } else {
+        return null
+      }
+    })
   }
 
   useEffect(() => {
@@ -85,18 +101,7 @@ function App() {
       <div className="articles-list">
         <div className="articles-list__container">
           {loading ? <div>Loading Articles</div> : null}
-          {articlesList.map((article, index) => {
-            if (
-              (filter === 'even' && (index + 1) % 2 === 0) ||
-              (filter === 'odd' && (index + 1) % 2 !== 0) ||
-              filter === 'all'
-            ) {
-              return <Article key={article.id} article={article} index={index + 1} localQuery={localQuery}              
-              />
-            } else {
-              return null
-            }
-          })}
+          {mapArticles()}
           {loading ?
             null
             :

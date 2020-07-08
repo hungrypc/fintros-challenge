@@ -1,10 +1,17 @@
 $primary-color-light: #fff;
-// $secondary-color-light: 
+// $primary-color-dark:  #383b42;
+$primary-color-dark:  #0b0d0f;
 
 $primary-font-color-light: #010101;
+$primary-font-color-dark: #f3f1eb;
 
 
 .light {
   background-color: $primary-color-light;
   color: $primary-font-color-light;
+}
+
+.dark {
+  background-color: $primary-color-dark;
+  color: $primary-font-color-dark;
 }

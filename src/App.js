@@ -74,6 +74,7 @@ function App() {
         handleLocalSearch={handleLocalSearch} 
         setFilter={setFilter} 
         handleDarkModeToggle={handleDarkModeToggle} 
+        darkMode={darkMode}
       />
       <div className="hero">
         <div className="hero__header">Hacker News</div>

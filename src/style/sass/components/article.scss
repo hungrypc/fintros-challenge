@@ -1,4 +1,7 @@
 .article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   padding: 75px 0;
   animation: slide-up 1s cubic-bezier(.48,.01,.42,1);

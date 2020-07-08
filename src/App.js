@@ -6,6 +6,7 @@ import ArticlesList from './components/ArticlesList'
 import { fetchArticles } from './api/hackerNewsAPI';
 
 import './style/css/App.css';
+import './style/css/style.css'
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -21,23 +22,22 @@ function App() {
   }
 
   useEffect(() => {
-    fetchArticles().then(allArticles => {
-      setArticles(allArticles)
-      setLoading(false)
-    })
+    // fetchArticles(page, query).then(articles => {
+    //   setArticles(articles)
+    //   setLoading(false)
+    // })
   }, []);
 
 
-  if (loading) {
-    return <div>Loading...</div>
-  } else {
-    return (
-      <div className="App">
-        <Navbar handleSearch={handleSearch}/>
-        <ArticlesList page={page} setPage={setPage} articles={articles} />
-      </div>
-    );
-  }
+
+  return (
+    <div className="App">
+      <Navbar handleSearch={handleSearch} setFilter={setFilter} />
+      <div className="hero"></div>
+      <ArticlesList page={page} setPage={setPage} articles={articles} filter={filter} />
+    </div>
+  );
+
 };
 
 export default App;

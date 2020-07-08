@@ -1,47 +1,52 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 
 import Article from './Article';
+import { fetchArticles } from '../api/hackerNewsAPI'
 
 function ArticlesList(props) {
-  const [filteredArticles, setFilteredArticles] = useState([])
+  const [articlesList, setArticlesList] = useState([])
   const [loading, setLoading] = useState(true)
-  // const [page, setPage] = useState(1)
 
+  // infinite scrolling
   const observer = useRef()
   const lastArticleRef = useCallback(node => {
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
-        console.log('visible')
         props.setPage(prevPage => prevPage = prevPage + 1)
       }
     })
     if (node) observer.current.observe(node)
   }, [props])
 
-
   useEffect(() => {
-    // returns number of articles per page
-    const paginate = (articlesList) => {
-      const numOfArticles = props.page * 30;
-      return articlesList.slice(0, numOfArticles)
-    }
+    fetchArticles(props.page, props.query)
+      .then(articles => {
+        console.log('hi', articles)
+        setArticlesList(prevArticles => {
+          return [...prevArticles, ...articles]
+        })
+        setLoading(false)
+      })
+  }, [props.page, props.filter, props.query])
 
-    setFilteredArticles(paginate(props.articles))
 
-  }, [props.page])
-
-  if (filteredArticles.length < 1) { 
-    return <div>loading</div>
-  } else {
-    return (
-      <div>
-        {filteredArticles.map((article, index) => (
-          <Article key={article} id={article} lastArticleRef={index === (props.page * 30) - 1 ? lastArticleRef : null} />
+  // if (articlesList.length < 1) {
+  //   return <div>loading</div>
+  // } else 
+  return (
+    <div className="articles-list">
+      <div className="articles-list__container">
+        {articlesList.map((article, index) => (
+          <Article key={article.id} article={article} 
+          lastArticleRef={index === (props.page * 30) - 1 ? lastArticleRef : null} 
+          />
         ))}
+        {/* <div ref={lastArticleRef}>{loading ? 'Loading...' : 'More Articles'}</div> */}
       </div>
-    )
-  }
+    </div>
+  )
+
 }
 
 export default ArticlesList

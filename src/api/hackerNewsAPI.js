@@ -1,18 +1,35 @@
 import axios from 'axios'
 
-const baseURL = 'https://hacker-news.firebaseio.com/v0'
+const baseURL = 'https://grabity-server.herokuapp.com'
 
-export const fetchArticles = async () => {
+export const fetchArticles = async (page=1, query='') => {
   // chose beststories because top and new contain jobs (we want articles)
   console.log('called')
-  const articleIds = await axios.get(`${baseURL}/beststories.json`)
-    .then(res => res.data)
+  const articles = await axios.post(`${baseURL}/articles`, {
+    page,
+    query
+  })
+    .then(res => {
+      console.log(res.data)
+      return res.data
+    })
     .catch(err => {
       console.log(err)
     })
 
-  return articleIds
+  return articles
 }
+// export const fetchArticles = async () => {
+//   // chose beststories because top and new contain jobs (we want articles)
+//   console.log('called')
+//   const articleIds = await axios.get(`${baseURL}/beststories.json`)
+//     .then(res => res.data)
+//     .catch(err => {
+//       console.log(err)
+//     })
+
+//   return articleIds
+// }
 
 
 // fetching data per article instead of returning compiled object of all article data

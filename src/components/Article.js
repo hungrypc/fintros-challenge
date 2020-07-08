@@ -9,24 +9,25 @@ function Article(props) {
   const [meta, setMeta] = useState({})
 
   useEffect(() => {
-    fetchArticleData(props.id).then(res => {
-      setArticle(res)
-      getMeta(res.url).then(res => {
+    // fetchArticleData(props.id).then(res => {
+      console.log(props.article)
+      // setArticle(props.article)
+      getMeta(props.article.url).then(res => {
         setMeta(res)
         setLoading(false)
       })
-    })
+    // })
   }, [])
 
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div className="article">Loading...</div>
   } else {
     return (
       <div className="article" ref={props.lastArticleRef}>
         {/* <img src={meta.image} alt="preview" /> */}
-        <div className="article__title">{article.title}</div>
-        <div className="article__description">{meta.description}</div>
+        <div className="article__title">{props.article.title}</div>
+        <div className="article__description">{meta.description ? meta.description : null}</div>
       </div>
     )
   }

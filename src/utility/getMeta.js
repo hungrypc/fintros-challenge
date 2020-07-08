@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const metaServerURL = 'https://grabity-server.herokuapp.com/'
+const metaServerURL = 'https://grabity-server.herokuapp.com/meta'
 
 export const getMeta = async (url) => {
   const metaData = await axios.post(metaServerURL, {
@@ -11,5 +11,13 @@ export const getMeta = async (url) => {
     console.log(err);
   });
 
-  return metaData.data
+  if (metaData){ 
+    return metaData.data
+  } else {
+    // handle no metaData
+    return {
+      description: '',
+      image: ''
+    }
+  } 
 }

@@ -1,4 +1,25 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+
+const Button = styled.button`
+  font-size: .8rem;
+  font-weight: 500;
+  border: 1px solid #e1e1e1;
+  padding: 7px 18px;
+  border-radius: 4px;
+  color: #a7a7a7;
+  cursor: pointer;
+  transition: all .2s ease;
+  font-weight: 600;
+`
+
+const Input = styled.input`
+  font-size: .8rem;
+  border-radius: 4px;
+  padding: 7px 18px;
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+`
 
 function Navbar(props) {
 
@@ -40,16 +61,16 @@ function Navbar(props) {
         >
           {props.darkMode ? <i className="fas fa-moon"></i> : <i className="far fa-moon"></i>}
         </div>
-        <div className="navbar__filter--btn" onClick={() => props.setFilter('all')}>All</div>
-        <div className="navbar__filter--btn" onClick={() => props.setFilter('even')}>Even</div>
-        <div className="navbar__filter--btn" onClick={() => props.setFilter('odd')}>Odd</div>
+        <Button className="navbar__filter--btn" onClick={() => props.setFilter('all')}>All</Button>
+        <Button className="navbar__filter--btn" onClick={() => props.setFilter('even')}>Even</Button>
+        <Button className="navbar__filter--btn" onClick={() => props.setFilter('odd')}>Odd</Button>
       </div>
       <div className="navbar__search">
         <form onSubmit={handleSubmit}>
-          <input type="text" onChange={(e) => setQuery(e.target.value)} placeholder="Search Title" />
+          <Input type="text" onChange={(e) => setQuery(e.target.value)} placeholder="Search Title" />
         </form>
         <form onSubmit={handleLocalSubmit}>
-          <input type="text" onChange={(e) => setLocalQuery(e.target.value)} placeholder="Search Title Locally" />
+          <Input type="text" onChange={(e) => setLocalQuery(e.target.value)} placeholder="Search Title Locally" />
         </form>
       </div>
     </div>

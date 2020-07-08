@@ -10,9 +10,11 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "serve": "^11.3.2"
+    "serve": "^11.3.2",
+    "styled-components": "^5.1.1"
   },
   "scripts": {
+    "dev:start": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
     "heroku-postbuild": "npm run build",

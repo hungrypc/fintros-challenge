@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Navbar(props) {
+
+  const [query, setQuery] = useState('')
+
   return (
     <div className="navbar">
       <div className="navbar__filter">
@@ -9,7 +12,8 @@ function Navbar(props) {
         <button onClick={() => props.setFilter('odd')}>Odd</button>
       </div>
       <div className="navbar__title"></div>
-      <input type="text" onChange={() => props.handleSearch()}></input>
+      <input type="text" onChange={(e) => setQuery(e.target.value)}></input>
+      <button onClick={() => props.handleSearch(query)}>Search</button>
     </div>
   )
 }

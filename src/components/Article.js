@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { fetchArticleData } from '../api/hackerNewsAPI';
 import { getMeta } from '../utility/getMeta'
 
 function Article(props) {
@@ -9,14 +8,11 @@ function Article(props) {
   const [meta, setMeta] = useState({})
 
   useEffect(() => {
-    // fetchArticleData(props.id).then(res => {
-      console.log(props.article)
-      // setArticle(props.article)
-      getMeta(props.article.url).then(res => {
-        setMeta(res)
-        setLoading(false)
-      })
-    // })
+    getMeta(props.article.url).then(res => {
+      setMeta(res)
+      setLoading(false)
+    })
+
   }, [])
 
 

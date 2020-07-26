@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
+@font-face {
+  font-family: 'SF Compact';
+  src: url('../fonts/SF-Compact-Text-Regular.otf') format('opentype');
+}
 
+body {
+  margin: 0;
+  font-family: 'SF Compact', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6rem;
+
+}
 
 .hero {
   display: flex;

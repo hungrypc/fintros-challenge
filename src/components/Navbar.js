@@ -26,6 +26,7 @@ const Input = styled.input`
   padding: 7px 18px;
   background-color: #fff;
   border: 1px solid #e1e1e1;
+  width: 130px;
 `
 
 function Navbar(props) {

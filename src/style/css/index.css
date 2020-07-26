@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
 @import url('https://www.fontify.me/wf/bc325006419a7c5afa1e7cdab635d4ac');
 
+html, body {
+}
+
 body {
   margin: 0;
   font-family: font92721;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem;
+
 }
